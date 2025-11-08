@@ -4,7 +4,7 @@ import { GoogleGenAI, Type } from "@google/genai";
 // The build was failing due to a top-level check for this variable.
 // By instantiating the client directly, we allow the build process to succeed,
 // and any potential issues with the API key will be handled at runtime by the library.
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY! });
 
 export const getShoppingSuggestions = async (prompt: string): Promise<string[]> => {
   try {
